@@ -1,0 +1,64 @@
+A51 MACRO ASSEMBLER  TRY2                                                                 05/04/2020 01:39:23 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\try2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE try2.asm SET(SMALL) DEBUG PRINT(.\Listings\try2.lst) OBJECT(.\Objects\t
+                      ry2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 802E              2     SJMP BASLA
+0030                   3     ORG 30H
+                       4     
+0030 7590FF            5     BASLA:MOV P1,#0FFH      ;basla
+0033 E4                6     CLR A   ;aküyü sifirla
+0034 2090FD            7     BUTON:JB P1.0,BUTON     ;buton tanimi
+                       8     
+0037                   9     AGAIN:          ;tekrarlama
+0037 75A0FF           10     MOV P2,#0FFH
+003A 1143             11     ACALL DELAY             ;gecikme
+003C 75A000           12     MOV P2, #0H
+003F 1143             13     ACALL DELAY
+0041 80F4             14     SJMP AGAIN
+0043                  15     DELAY:
+0043 7807             16     SURE: MOV R0,#07
+0045 79FF             17             MOV R1,#255             ;gecikme süresi
+0047 7AFF             18             MOV R2,#255
+0049 850189           19                     MOV TMOD, 01H
+004C 758C3C           20     TIME:   MOV TH0, #HIGH(15536)
+004F 758AB0           21                     MOV TL0, #LOW(15536)
+0052 D28C             22                     SETB TR0
+0054 308DFD           23     CONTROL: JNB TF0,CONTROL        ;kontrol bölümü
+0057 D8F3             24             DJNZ R0,TIME
+0059 22               25             RET
+                      26     END 
+A51 MACRO ASSEMBLER  TRY2                                                                 05/04/2020 01:39:23 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0037H   A   
+BASLA. . . . . . .  C ADDR   0030H   A   
+BUTON. . . . . . .  C ADDR   0034H   A   
+CONTROL. . . . . .  C ADDR   0054H   A   
+DELAY. . . . . . .  C ADDR   0043H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SURE . . . . . . .  C ADDR   0043H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIME . . . . . . .  C ADDR   004CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

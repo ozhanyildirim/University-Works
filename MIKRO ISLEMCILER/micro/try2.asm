@@ -1,0 +1,26 @@
+ORG 0H
+SJMP BASLA
+ORG 30H
+
+BASLA:MOV P1,#0FFH	;basla
+CLR A 	;aküyü sifirla
+BUTON:JB P1.0,BUTON 	;buton tanimi
+
+AGAIN:		;tekrarlama
+MOV P2,#0FFH
+ACALL DELAY		;gecikme
+MOV P2, #0H
+ACALL DELAY
+SJMP AGAIN
+DELAY:
+SURE: MOV R0,#07
+	MOV R1,#255		;gecikme süresi
+	MOV R2,#255
+		MOV TMOD, 01H
+TIME:	MOV TH0, #HIGH(15536)
+		MOV TL0, #LOW(15536)
+		SETB TR0
+CONTROL: JNB TF0,CONTROL	;kontrol bölümü
+	DJNZ R0,TIME
+	RET
+END 

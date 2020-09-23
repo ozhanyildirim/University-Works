@@ -1,0 +1,6 @@
+avl aðacýný oluþturmayý yaptým
+stack iþlemini yaptým
+dosyalama iþlemini yaptým 
+üçünü ayrý ayrý olarak yaptým fakat birleþtirmede problem yaþadým
+o yüzden stack ve avl bölümünü ayýrdým 
+çok uðraþtým fakat birleþtirmeyi bir türlü yapamadým . 

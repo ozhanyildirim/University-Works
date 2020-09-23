@@ -1,0 +1,3 @@
+".\Objects\try2.obj" 
+TO ".\Objects\asd" 
+PRINT(".\Listings\asd.m51") RAMSIZE(256) 
